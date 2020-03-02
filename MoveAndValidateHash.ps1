@@ -1,16 +1,17 @@
-﻿$source = "c:\Dev"
+$source = "c:\Dev"
 $dest = "c:\dev\testing"
 $file = "test.txt"
 
 robocopy $source $dest $file
 
-if ($lastexitcode -eq 0)
+if ($lastexitcode -eq 0 -OR $lastexitcode -eq 1)
 {
     write-host "Robocopy succeeded"
 }
 else
 {
     write-host "Robocopy failed with exit code:" $lastexitcode
+    Exit
 }
 
 write-host "Getting Filehash for source file"
