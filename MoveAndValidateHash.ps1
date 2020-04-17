@@ -8,6 +8,10 @@ if ($lastexitcode -eq 0)
 {
     write-host "Robocopy succeeded"
 }
+elseif ($lastexitcode -eq 1)
+{
+    write-host "Robocopy succeeded"
+}
 else
 {
     write-host "Robocopy failed with exit code:" $lastexitcode
@@ -23,7 +27,7 @@ write-host "Filehas found :- $destHash.Hash"
 
 if ($sourceHash.Hash -eq $destHash.Hash)
 {
-	write-host "Hash files match - Copy Successfull"
+	Remove-Item -Path (Join-Path -path $source -childpath $file)
 }
 else
 {
